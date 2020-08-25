@@ -76,3 +76,9 @@
   background-size: 115% !important;
   background-repeat: no-repeat !important;
 }
+
+@media screen and (max-width: 350px) {
+  .products-item {
+    max-width: 280px;
+  }
+}
