@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/productsCard/static/css/main.19246846.chunk.css",
+    "main.js": "/productsCard/static/js/main.eb33a334.chunk.js",
+    "main.js.map": "/productsCard/static/js/main.eb33a334.chunk.js.map",
+    "runtime-main.js": "/productsCard/static/js/runtime-main.84cae6b5.js",
+    "runtime-main.js.map": "/productsCard/static/js/runtime-main.84cae6b5.js.map",
+    "static/js/2.72b79e27.chunk.js": "/productsCard/static/js/2.72b79e27.chunk.js",
+    "static/js/2.72b79e27.chunk.js.map": "/productsCard/static/js/2.72b79e27.chunk.js.map",
+    "index.html": "/productsCard/index.html",
+    "precache-manifest.3eda52d4d987a26606eddc255147c570.js": "/productsCard/precache-manifest.3eda52d4d987a26606eddc255147c570.js",
+    "service-worker.js": "/productsCard/service-worker.js",
+    "static/css/main.19246846.chunk.css.map": "/productsCard/static/css/main.19246846.chunk.css.map",
+    "static/js/2.72b79e27.chunk.js.LICENSE.txt": "/productsCard/static/js/2.72b79e27.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/productsCard/static/media/Exo2-Thin.e8705678.woff2",
+    "static/media/Products.css": "/productsCard/static/media/bg.28e5e56e.png",
+    "static/media/cat.png": "/productsCard/static/media/cat.17741b29.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84cae6b5.js",
+    "static/js/2.72b79e27.chunk.js",
+    "static/css/main.19246846.chunk.css",
+    "static/js/main.eb33a334.chunk.js"
+  ]
+}
