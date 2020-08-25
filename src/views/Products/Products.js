@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Products.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import cat from '../../assets/imgs/cat.png';
@@ -12,7 +12,7 @@ const products = [
     img: cat,
     badge: '0,5 кг',
     accentBadge: '0,5',
-    phrase: 'Чего сидишь? Порадуй котэ, купи.',
+    caption: 'Чего сидишь? Порадуй котэ, купи.',
     layoutColor: '#1698D9',
     id: '1',
   },
@@ -24,7 +24,7 @@ const products = [
     img: cat,
     badge: '2 кг',
     accentBadge: '2',
-    phrase: 'Головы щучьи с чесноком да свежайшая сёмгушка.',
+    caption: 'Головы щучьи с чесноком да свежайшая сёмгушка.',
     layoutColor: '#D91667',
     id: '2',
   },
@@ -36,16 +36,19 @@ const products = [
     img: cat,
     badge: '5 кг',
     accentBadge: '5',
-    phrase: 'Печалька, с курой закончился.',
+    caption: 'Печалька, с курой закончился.',
     layoutColor: '#FFFF66',
     id: '3',
+    isEnded: true,
   },
 ];
 
 function Products() {
+  const [selectedProductsId, setSelectedProductsId] = useState([]);
+
   const ProductLayout = ({ product }) => {
     const cutAccentText = ({ fullText, accentText }) => {
-      return fullText.replace(accentText, '') || fullText;
+      return fullText.replace(accentText, '');
     };
 
     return (
@@ -57,33 +60,41 @@ function Products() {
             { cutAccentText({ fullText: product.title, accentText: product.accentTitle }) }
           </h3>
           <div className="product-layout-desc">
-            {product.descriptions.map(desc => <p key={desc}>{desc}</p>)}
+            {product.descriptions.map(desc => <p key={desc}>{ desc }</p>)}
           </div>
         </div>
 
         <div style={{ background: `url(${product.img})` }} className="product-layout-bottom" />
-
-        <div style={{ background: product.layoutColor }} className="product-layout-badge">
-          <p className="product-layout-badge-accent">{ product.accentBadge }</p>
-            <span>{ cutAccentText({ fullText: product.badge, accentText: product.accentBadge }) }</span>
-        </div>
       </div>
     );
   };
 
+  const onToggleSelect = ({ isSelected, productId }) => {
+    let newSelectedProductsId = [...selectedProductsId];
+    const productIndex = newSelectedProductsId.indexOf(productId);
+    if(productIndex > -1) newSelectedProductsId.splice(productIndex, 1);
+    else if(isSelected) newSelectedProductsId.push(productId);
+    setSelectedProductsId(newSelectedProductsId);
+  };
+  useEffect(() => console.log(selectedProductsId), [selectedProductsId]);
+
   return (
     <div className="products">
-      <div className="products-list">
-        {products.map(product => (
-          <ProductCard
-            className="products-item"
-            borderColor={product.layoutColor}
-            desc={product.phrase}
-            key={product.id}
-          >
-            <ProductLayout product={product}/>
-          </ProductCard>
-        ))}
+      <div className="products-body">
+        <h2 className="products-body-title title">Ты сегодня покормил кота?</h2>
+
+        <div className="products-list">
+          {products.map(product => (
+            <ProductCard
+              className="products-item"
+              key={product.id}
+              product={product}
+              onToggleSelect={onToggleSelect}
+            >
+              <ProductLayout product={product}/>
+            </ProductCard>
+          ))}
+        </div>
       </div>
     </div>
   );
