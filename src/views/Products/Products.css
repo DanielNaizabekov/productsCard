@@ -82,3 +82,9 @@
     max-width: 280px;
   }
 }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .products-item {
+    min-height: 495px;
+  }
+}
